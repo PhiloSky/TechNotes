@@ -1,0 +1,31 @@
+Github上写博客
+=============
+
+
+安装reText
+----------
+
+Ubuntu 12.04, 11.10, 11.04 or 10.10用户可以通过PPA安装，打开终端，输入命令:
+
+	$ sudo add-apt-repository ppa:mitya57
+	$ sudo apt-get update
+	$ sudo apt-get install retext
+
+**如果提示无法下载bzip2, Hash 校验和不符**
+
+这个问题其实有两部分原因， 一是网络， 另外一个压缩格式的问题。解决方法也有两种**（第2种亲测有效）**：
+
+	1. /var/lib/apt/lists, 把lists这个目录改个名字备份一下， 重新建一个同名目录， 然后再apt-get update
+
+	2. 这种是压缩格式造成的问题， 在/etc/apt.conf.d/00aptitude文件（如果没有这个文件请自建）的最后一行添加如下内容：
+	Acquire::CompressionTypes::Order "gz"; (不要漏掉分号)
+	然后重新：apt-get update
+
+	3. 如果还是不行的话， 查看一下你的sourcelist文件中，是否包含有源代码的源， 如果有的话先注释掉， 就可以了。 这个问题我已经在163.sohu这两个源都发现了这个问题，如果把源代码的源带上就会出现以上问题是， 去掉后啥事没有。
+
+如果要插入HTML标记语言，可以用HTML转义字符，Markdown完全兼容HTML语法
+
+	&lt;表示<
+	&gt;表示>
+用记事本全部替换即可
+

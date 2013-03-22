@@ -1,0 +1,56 @@
+github使用笔记
+=============
+
+
+git下载命令
+----------
+以Android-Kitchen为例
+
+### 首次下载
+	$ git clone https://github.com/dsixda/Android-Kitchen.git
+	//github目录到名称是区分大小写的，如果提示远程链接不上，检查一下大小写
+
+### 已经下载过，拷贝到别的地方去
+复制.git并改名为Android-Kitchen.git，放到想要存放仓库的上级目录，比如~下
+	
+	$ git clone Android-Kitchen.git
+	//即clone本地仓库Android-Kitchen.git
+	//不过这样origin就变成本地了，而不是远程的https://github.com/dsixda/Android-Kitchen.git了
+	到/.git/config文件中，将origin改回来
+
+
+设定Github的SSH Key
+------------------
+	$ ssh-keygen -t rsa -C "committer_email@committermail.com"  
+	//创建个新的SSH key
+
+设定存放目录和密码后把.ssh/id_rsa.pub的文件内容粘贴进github的帐号里
+
+	$ ssh -T git@github.com 
+	//测试是否成功  
+
+如果出现"Agent admitted failure to sign using the key"
+则解決方法是使用 ssh-add 指令将私钥 加进来（有多个密钥时，可根据实际情况改名xxx_rsa）
+	$ ssh-add   ~/.ssh/id_rsa
+
+Git常用命令
+----------
+	$ git branch ics
+	$ git checkout ics
+	$ git status
+	$ git remote add PhiloSky git://github.com/bluewater-cn/android_hardware_libhardware.git
+	$ git pull PhiloSky ics
+	//=git fetch PhiloSky+git merge PhiloSky/ics
+### 做了修改之后
+	$ git add .
+	$ git commit -a -m "..."
+	$ git push PhiloSky ics
+### 撤销某次提交
+	$ git revert xxxxxxx
+	//xxxxx代表某次提交的ID
+
+### 当前在no branch里，合并no branch的内容到新分支ics
+	$ git log -1
+	$ git branch ics
+	$ git checkout ics
+	$ git merge xxxx(最后一次提交的ID)

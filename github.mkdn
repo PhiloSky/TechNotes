@@ -30,7 +30,9 @@ git下载命令
 	//测试是否成功  
 
 如果出现"Agent admitted failure to sign using the key"
-则解決方法是使用 ssh-add 指令将私钥 加进来（有多个密钥时，可根据实际情况改名xxx_rsa）
+
+则解決方法是使用 ssh-add 指令将私钥加进来（有多个密钥时，可根据实际情况改名xxx_rsa）
+
 	$ ssh-add   ~/.ssh/id_rsa
 
 Git常用命令

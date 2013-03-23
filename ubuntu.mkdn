@@ -36,13 +36,13 @@ ubuntu本地化
 
 	1）浏览器的 flash 插件：Adobe-flashplugin
 	2）播放器的MP3解码器：Fluendo codecs to decode mp3
+
 	3）播放器的多媒体解码包（四组）：
 	GStreamer extra plugins
 	GStreamer ffmpeg video plugin
 	GStreamer plugins for mms,wavpack,quicktime,mousepack
 	GStreamer plugins for aac,xvid,mpeg2,faad
-以上插件的安装命令
-
+	以上插件的安装命令
 	sudo apt-get install flashplugin-installer gstreamer0.10-fluendo-mp3 gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse
 
 	//4）PDF 阅读器的文字编码包：poppler-data 
@@ -63,7 +63,7 @@ ubuntu本地化
 	//pidgin libqq—pidgin插件和飞信的插件也是不错的选择google上可以下到，也可以百度下添加源的方法
 	//9）下载工具： amule 类似电驴的东西
 	
-3.**webqq桌面化**
+**3.webqq桌面化**
 
 4.修改49-sansserif.conf解决pdf乱码问题（亲测）
 
@@ -110,7 +110,7 @@ Ubuntu常见命令
 	勾选computer_icon_visible、home_icon_visible和trash_icon_visible边上的复选框。
 	马上就会在桌面上看到效果。
  
-2、**清除系统垃圾文件：**
+**2、清除系统垃圾文件：**
 
 	终端里面输入：
 	sudo apt-get autoremove
@@ -127,7 +127,7 @@ Ubuntu常见命令
 	安装Mplayer播放器：sudoapt-get install mplayer
 	或者通过ubuntu软件中心安装gnomemplayer
  
-5、**双系统更改启动顺序：**
+**5、双系统更改启动顺序：**
 
 	//亲测，注意是从0开始，如果是第6位，数字应该写5
 	我装的是XP和ubuntu10.10，默认启动顺序是ubuntu在第一位，XP在最后一位。经常用XP的话每次启动后都要手动选择比较麻烦。
@@ -141,7 +141,7 @@ Ubuntu常见命令
 	解决：选择菜单“编辑”->“首选项”
 	“播放器”面板当中“视频输出:”设置为“xv”即可解决
  
-7、**快捷打开终端：Ctrl+Alt+T**
+**7、快捷打开终端：Ctrl+Alt+T**
 
 8、安装五笔输入法：
 
@@ -296,7 +296,7 @@ Ubuntu常见命令
 	(只有终端界面)-i 开始运行时执行安装。
 	(只有终端界面)
 
-22、**ubuntu系统目录结构**
+**22、ubuntu系统目录结构**
 
 	/：根目录是所有目录的绝对路径的起始点，ubuntu中的所有文件和目录都在根目录下
 	/etc:此目录非常重要，绝大多数系统的相关服务的配置文件都保存在这里，这个目录的内容一般只能由管理员进行修改。（下面的源列表，网络设置文件……都在这个文件下）
@@ -314,7 +314,7 @@ Ubuntu常见命令
 	/media：主要用于挂载多媒体设备
 	/root：系统管理员宿主目录
 
-23、**按内容查找文件：**
+**23、按内容查找文件：**
 
 	进入该目录下
 	find |xargs grep "xxx"

@@ -7,9 +7,9 @@ Github上写博客
 
 Ubuntu 12.04, 11.10, 11.04 or 10.10用户可以通过PPA安装，打开终端，输入命令:
 
-	$ sudo add-apt-repository ppa:mitya57
-	$ sudo apt-get update
-	$ sudo apt-get install retext
+	sudo add-apt-repository ppa:mitya57
+	sudo apt-get update
+	sudo apt-get install retext
 
 **如果提示无法下载bzip2, Hash 校验和不符**
 

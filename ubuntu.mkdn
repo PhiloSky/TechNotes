@@ -67,7 +67,7 @@ ubuntu本地化
 
 4.修改49-sansserif.conf解决pdf乱码问题（亲测）
 
-	$ sudo gedit /etc/fonts/conf.d/49-sansserif.conf
+	sudo gedit /etc/fonts/conf.d/49-sansserif.conf
 “文泉驿微米黑”即是改好后的调用的字体名称
 
 &lt;string&gt;文泉驿微米黑&lt;/string&gt;
@@ -100,17 +100,17 @@ Windows下的txt用的是GBK编码，而getdit默认用的是UTF-8编码，所�
 
 打开终端，输入
 
-	$ sudo apt-get install dconf-tools；
+	sudo apt-get install dconf-tools；
 安装完成后，在终端输入
 
-	$ dconf-editor
+	dconf-editor
 
 这时会打开一个界面，在界面的左边依次选择org——gnome——gedit——preferences——encodings；
 选到encodings时，在右边双击auto-detected，添加'GB18030','GB2312','GBK'。输完后回车即可。这时候就能打开txt文档了。
 
 也可以在终端通过命令行来解决。直接输入：
 
-	$ gsettings set org.gnome.gedit.preferences.encodings auto-detected "['UTF-8','GB18030','GB2312','GBK','BIG5','CURRENT','UTF-16']"
+	gsettings set org.gnome.gedit.preferences.encodings auto-detected "['UTF-8','GB18030','GB2312','GBK','BIG5','CURRENT','UTF-16']"
 
 （三）去掉密钥环
 

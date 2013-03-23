@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Q+ Web
+Type=Link
+URL=http://web.qq.com/
+Icon=/home/username/公共/webQQ.png
+#上面这行输入自己的图标位置
+Name[zh_CN]=WebQQ
+#上面这行表示快捷方式名称

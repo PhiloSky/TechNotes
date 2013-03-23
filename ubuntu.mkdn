@@ -72,6 +72,21 @@ ubuntu本地化
 
 &lt;string&gt;文泉驿微米黑&lt;/string&gt;
 
+5.安装小小输入法(慎用)
+
+	项目主页：http://yong.uueasy.com/
+
+	1、进安装目录，执行命令
+	sudo ./yong-tool.sh --install
+	卸载：
+	sudo ./yong-tool.sh --uninstall
+	2、选择作为默认输入法
+	选择作为默认输入法
+	./yong-tool.sh --select
+	如果不起作用，也可以执行
+	sudo im-switch -c
+	选择yong，注销重新进入系统就能用了。
+
 
 问题处理
 -------

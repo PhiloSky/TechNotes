@@ -56,3 +56,8 @@ Git常用命令
 	git branch ics
 	git checkout ics
 	git merge xxxx(最后一次提交的ID)
+	或者 
+	git checkout -b ics一条搞定（新建ics分支，并merge no branch）
+
+### 如果想单独repo sync某个项目
+	repo sync project1 (project2 project3 ...)

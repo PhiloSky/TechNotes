@@ -62,3 +62,27 @@ Git常用命令
 
 ### 如果想单独repo sync某个项目
 	repo sync project1 (project2 project3 ...)
+	
+	
+###查看当前的远程库
+
+    $ git remote
+    //也可以加上 -v 选项(译注:此为 –verbose 的简写,取首字母),显示对应的克隆地址:
+    $ git remote -v
+    
+###添加远程仓库
+
+要添加一个新的远程仓库,可以指定一个简单的名字,以便将来引用,运行 git remote add [shortname] [url]:
+
+    $ git remote add pb git://github.com/paulboone/ticgit.git
+
+###远程仓库的删除和重命名
+
+在新版 Git 中可以用 git remote rename 命令修改某个远程仓库的简短名称,比如想把 pb 改成 paul,可以这么运行:
+
+    $ git remote rename pb paul
+    //注意,对远程仓库的重命名,也会使对应的分支名称发生变化,原来的 pb/master 分支现在成了paul/master.
+
+碰到远端仓库服务器迁移,或者原来的克隆镜像不再使用,又或者某个参与者不再贡献代码,那么需要移除对应的远端仓库,可以运行 git remote rm 命令:
+
+    $ git remote rm paul

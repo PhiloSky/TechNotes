@@ -27,7 +27,8 @@ git下载命令
 设定存放目录和密码后把.ssh/id_rsa.pub的文件内容粘贴进github的帐号里
 
 	ssh -T git@github.com 
-	//测试是否成功  
+	//测试是否成功
+	//会询问yes还是no，要手动输入yes才可以  
 
 如果出现"Agent admitted failure to sign using the key"
 

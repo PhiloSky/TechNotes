@@ -8,7 +8,7 @@ ubuntu使用笔记
 
 	根分15G以上
 	/home分40G以上(越大越好，源码的git占8G，释放的源码4.7G，编译需要14G剩余空间，sdk有1.2G)
-	swap分内存大小即可
+	swap分内存大小即可,若为4G物理内存则分1G足矣
 	安装时如有更合适的软件源（比如国内的网易和各大高校的软件源）可不skip（跳过）下载文件，待安装完毕设置好软件源后执行更新即可
 
 2.安装完毕设置工作
@@ -24,7 +24,7 @@ ubuntu使用笔记
 
 	新立得软件包管理器synaptic
 	chrome浏览器chromium-browser
-	Beyond Compare 3.3.5 注册码 For Windows /Linux
+	Beyond Compare 3.3.5/3.3.7 注册码 For Windows /Linux
 	HmB5oANygQOhaStTHNa+zOKgOeWHOkeAp6d1+QwIebz6z9kwYCm9-O0jF9F79zvzed9v5UVC4VrDkDMmTM8nB+
 
 
@@ -360,3 +360,17 @@ Ubuntu常见命令
 	--help：显示辅助说明
 	--version：显示版本
 
+**26、ubuntu创建、删除文件及文件夹，强制清空回收站方法**
+
+	mkdir 目录名	=> 创建一个目录
+	rmdir 空目录名	=> 删除一个空目录
+	rm 文件名 文件名	=> 删除一个文件或多个文件
+	rm –rf 非空目录名	=> 删除一个非空目录下的一切
+	touch 文件名	=> 创建一个空文件
+重命名文件（夹）/移动文件（夹）到指定文件夹
+
+	执行格式： mv source destination
+	Example:
+	mv file1 file2    => 将文件 file1，更改文件名为 file2。
+	mv file1 dir1    => 将文件 file1，移到目录 dir1下，文件名仍为 file1。
+	mv dir1 dir2    => 若目录dir2存在，则将目录dir1，及其所有文件和子目录，移到目录dir2下，新目录名称为dir1。若目录dir2不存在，则将dir1，及其所有文件和子目录，更改为目录dir2。

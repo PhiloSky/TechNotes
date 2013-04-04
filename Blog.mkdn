@@ -17,7 +17,7 @@ Ubuntu 12.04, 11.10, 11.04 or 10.10用户可以通过PPA安装，打开终端，
 
 	1. /var/lib/apt/lists, 把lists这个目录改个名字备份一下， 重新建一个同名目录， 然后再apt-get update
 
-	2. 这种是压缩格式造成的问题， 在/etc/apt.conf.d/00aptitude文件（如果没有这个文件请自建）的最后一行添加如下内容：
+	2. 这种是压缩格式造成的问题， 在/etc/apt/apt.conf.d/00aptitude或/etc/apt.conf.d/00aptitude（ubuntu 11.10）文件（如果没有这个文件请自建）的最后一行添加如下内容：
 	Acquire::CompressionTypes::Order "gz"; (不要漏掉分号)
 	然后重新：apt-get update
 

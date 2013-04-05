@@ -360,17 +360,47 @@ Ubuntu常见命令
 	--help：显示辅助说明
 	--version：显示版本
 
-**26、ubuntu创建、删除文件及文件夹，强制清空回收站方法**
+**26、ubuntu创建、删除、重命名文件及文件夹**
 
 	mkdir 目录名	=> 创建一个目录
 	rmdir 空目录名	=> 删除一个空目录
 	rm 文件名 文件名	=> 删除一个文件或多个文件
 	rm –rf 非空目录名	=> 删除一个非空目录下的一切
 	touch 文件名	=> 创建一个空文件
+
 重命名文件（夹）/移动文件（夹）到指定文件夹
 
 	执行格式： mv source destination
 	Example:
-	mv file1 file2    => 将文件 file1，更改文件名为 file2。
-	mv file1 dir1    => 将文件 file1，移到目录 dir1下，文件名仍为 file1。
-	mv dir1 dir2    => 若目录dir2存在，则将目录dir1，及其所有文件和子目录，移到目录dir2下，新目录名称为dir1。若目录dir2不存在，则将dir1，及其所有文件和子目录，更改为目录dir2。
+	mv file1 file2	=> 将文件 file1，更改文件名为 file2。
+	mv file1 dir1	=> 将文件 file1，移到目录 dir1下，文件名仍为 file1。
+	mv dir1 dir2	=> 若目录dir2存在，则将目录dir1，及其所有文件和子目录，移到目录dir2下，新目录名称为dir1。若目录dir2不存在，则将dir1，及其所有文件和子目录，更改为目录dir2。
+
+**编译python3.3.0并安装**
+
+下载
+
+	http://www.python.org/ftp/python/3.3.0/
+解压，进入解压缩后的文件夹
+
+	cd Python-3.3.0
+在编译前先在/usr/local建一个文件夹python3（作为python的安装路径，以免覆盖老的版本）
+
+	mkdir /usr/local/python3
+开始编译安装
+
+	./configure --prefix=/usr/local/python3
+	make
+	make install
+此时没有覆盖老版本，再将原来/usr/bin/python链接改为别的名字
+
+	mv /usr/bin/python3 /usr/bin/python3_old
+再建立新版本python的链接
+
+	ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+这个时候输入
+
+	python3 -V
+就会显示出python3的新版本信息
+
+PS：如果不建立新安装路径python3，而是直接默认安装，则安装后的新python应该会覆盖linux下自带的老版本，也有可能不覆盖，具体看安装过程了，这个大家可以自己试验下，当然如果还想保留原来的版本，那么这种方法最好不过了。

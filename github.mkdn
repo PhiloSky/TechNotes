@@ -66,23 +66,45 @@ Git常用命令
 	
 ###查看当前的远程库
 
-    $ git remote
-    //也可以加上 -v 选项(译注:此为 –verbose 的简写,取首字母),显示对应的克隆地址:
-    $ git remote -v
+	git remote
+	//也可以加上 -v 选项(译注:此为 –verbose 的简写,取首字母),显示对应的克隆地址:
+	git remote -v
     
 ###添加远程仓库
 
 要添加一个新的远程仓库,可以指定一个简单的名字,以便将来引用,运行 git remote add [shortname] [url]:
 
-    $ git remote add pb git://github.com/paulboone/ticgit.git
+	git remote add pb git://github.com/paulboone/ticgit.git
 
 ###远程仓库的删除和重命名
 
 在新版 Git 中可以用 git remote rename 命令修改某个远程仓库的简短名称,比如想把 pb 改成 paul,可以这么运行:
 
-    $ git remote rename pb paul
-    //注意,对远程仓库的重命名,也会使对应的分支名称发生变化,原来的 pb/master 分支现在成了paul/master.
+	git remote rename pb paul
+	//注意,对远程仓库的重命名,也会使对应的分支名称发生变化,原来的 pb/master 分支现在成了paul/master.
 
 碰到远端仓库服务器迁移,或者原来的克隆镜像不再使用,又或者某个参与者不再贡献代码,那么需要移除对应的远端仓库,可以运行 git remote rm 命令:
 
-    $ git remote rm paul
+	git remote rm paul
+
+###git新建本地分支自动与远程分支关联(没试过，以branchname分支为例)
+
+	git branch --set-upstream branchname origin/branchname
+
+结果是在项目目录下 .git/config中添加如下内容
+
+	[branch "branchname"]
+		remote = origin
+		merge = refs/heads/branchname
+如果是新建分支跟踪远程库，则应该
+
+	git branch --track branchname origin/branchname
+加入跟踪后，如果要跟进，只需git pull即可（没试过）
+
+###修正前一次提交
+
+有时候我们提交了一次之后发现漏了东西，我们确实不想为了这个漏的东西而做一次单独的提交。让我们直接修正前一次的提交。
+
+	git add file.name
+	git commit --amend -m "make a comment"
+再看log的时候就会发现上一次的提交已经没了，换成了这次的提交

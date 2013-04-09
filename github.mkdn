@@ -51,6 +51,9 @@ Git常用命令
 ### 撤销某次提交
 	git revert xxxxxxx
 	//xxxxx代表某次提交的ID
+### 删除某次提交之后的所有提交
+	git reset --hard harshcodexxxx
+	//harshcodexxxx表示某次提交的harsh码，如果删除的提交中有tags，最好也删除，便于系统回收
 
 ### 当前在no branch里，合并no branch的内容到新分支ics
 	git log -1
@@ -75,6 +78,10 @@ Git常用命令
 要添加一个新的远程仓库,可以指定一个简单的名字,以便将来引用,运行 git remote add [shortname] [url]:
 
 	git remote add pb git://github.com/paulboone/ticgit.git
+	//这里只是添加了远程仓库，但并没有pull下来远程分支，所以git branch -a时还没有此远程仓库的任何信息
+	当输入了一次git pull之后才会pull下远程仓库的分支
+***注意远程仓库和远程分支的区别**
+
 
 ###远程仓库的删除和重命名
 
@@ -87,19 +94,29 @@ Git常用命令
 
 	git remote rm paul
 
-###git新建本地分支自动与远程分支关联(没试过，以branchname分支为例)
+###git本地分支branchname与远程仓库remoterepo的分支branchname关联
+（前提是远程分支已加入，即git branch -a列出的分支包含remoterepo/branchname）
 
-	git branch --set-upstream branchname origin/branchname
+	git branch --set-upstream branchname remoterepo/branchname
 
 结果是在项目目录下 .git/config中添加如下内容
 
 	[branch "branchname"]
-		remote = origin
+		remote = remoterepo
 		merge = refs/heads/branchname
 如果是新建分支跟踪远程库，则应该
 
-	git branch --track branchname origin/branchname
-加入跟踪后，如果要跟进，只需git pull即可（没试过）
+	git branch --track branchname remoterepo/branchname
+加入跟踪后，如果要跟进，只需git pull即可
+
+###如果当前没有该远程分支（只有远程仓库）
+则应该手动加入跟踪属性
+
+	git config branch.branchname.remote remoterepo
+	//remote属性
+	git config branch.branchname.merge refs/heads/branchname
+	//merge属性
+之后切换到branchname分支下，直接git pull即可
 
 ###修正前一次提交
 
@@ -108,3 +125,23 @@ Git常用命令
 	git add file.name
 	git commit --amend -m "make a comment"
 再看log的时候就会发现上一次的提交已经没了，换成了这次的提交
+
+
+###git删除分支
+
+####删除本地分支
+
+	git branch -d <分支名>
+
+如果该分支没有合并到主分支会报错，可以用以下命令强制删除
+
+	git branch -D <分支名>
+
+####删除远程分支
+首先要确保远端仓库当前分支不是要删除的分支。
+
+删除远程分支branchname的命令如下： 
+
+	git push origin :heads/branchname 
+
+这里的origin是远程仓库的名称

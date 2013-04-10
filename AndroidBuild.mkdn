@@ -111,3 +111,22 @@ repo sync断点续传
 	//编译后的输出包括了该模块所依赖的外部模块和此模块下的子模块，有的模块编译后会输出到最终的system目录中，有的则不会，后者是因为他们只是被编译成静态库等其他目标，供其他子项目调用。所以编译后要根据修改的代码所处的子项目的性质（输出或不输出到system）判断是否应该到system中去寻找
 	//没有修改过代码的模块即使输出到system中也不必理会
 	//将找到的文件替换到手机中即可测试相应的功能
+
+
+adb无法识别设备
+-------------
+输入adb devices时显示
+List of devices attached 
+???????????? no permissions
+
+查看miui patchrom给出的教程说让用root权限运行adb，但直接写sudo adb又没有sudo: adb的命令，正确的方法应该是：
+
+进入sdk的adb所在的目录下，比如～/android-sdk-linux/platform-tools，运行：
+
+	./adb kill-server
+	sudo ./adb start-server
+出现
+
+	* daemon not running. starting it now *
+	* daemon started successfully *
+第一条命令用来杀死当前正在运行的server, 第二条命令则以root的权限启动了新的server.再次adb devices可看到设备。如果还不行，再采取别的方法。

@@ -2,13 +2,48 @@ Android源码编译笔记
 =================
 
 
-编译前准备工作（64位ubuntu系统）
-----------------------------
+编译前准备工作
+------------
+**对于ubuntu12.04之前版本 64位**
 //(摘抄自lewa Openbuild教程)
 
 	sudo apt-get install git gitk git-gui git-cola valgrind ssh git-core gnupg pngcrush flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev gcc gcc-multilib gcc-arm-linux-gnueabi gcc-arm-linux-gnueabihf g++ g++-multilib g++-arm-linux-gnueabi g++-arm-linux-gnueabihf mingw32 tofrodos python-markdown libxml2-utils lib32readline-gplv2-dev gcc-4.4 gcc-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabihf gcc-4.4-multilib g++-4.4 g++-4.4-multilib g++-4.4-arm-linux-gnueabi g++-4.4-arm-linux-gnueabihf gcc-4.5 gcc-4.5-arm-linux-gnueabi gcc-4.5-arm-linux-gnueabihf gcc-4.5-multilib g++-4.5 g++-4.5-multilib g++-4.5-arm-linux-gnueabi g++-4.5-arm-linux-gnueabihf schedtool openjdk-*
 	//安装必要的软件包
-	//具体都有哪些软件包我也不清楚，但每次重装系统，这一条命令就可以搞定
+	
+**对于ubuntu12.10 64位**
+
+安装所有的套件
+
+    sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev:i386 g++-multilib mingw32 openjdk-6-jdk tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+    
+gcc降级（从自带的4.7降级到4.4，因为编译的时候4.7会与android源码不兼容）
+
+    sudo apt-get install gcc-4.4 g++-4.4 g++-4.4-multilib
+    cd /usr/bin
+    sudo mv gcc gcc.bak
+    sudo mv g++ g++.bak
+    sudo ln -s gcc-4.4 gcc
+    sudo ln -s g++-4.4 g++
+
+安装Sun Java 6（现在必须手动安装jdk）
+
+    //Download Java
+http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html
+
+    以 jdk-6u45-linux-x64.bin 为例（jdk6的最新版）
+    
+    //jdk-6u37-linux-x64.bin复制到～
+    cd ~
+    sudo cp jdk-6u37-linux-x64.bin /opt
+    cd /opt
+    sudo chmod a+x jdk-6u37-linux-x64.bin
+    sudo ./jdk-6u37-linux-x64.bin
+    gedit ~/.bashrc
+    //至最后一行加上（以实际版本为准）
+    export PATH=$PATH:/opt/jdk1.6.0_45:/opt/jdk1.6.0_45/bin:/opt/jdk1.6.0_45/lib
+    source ~/.bashrc
+
+---
 
 	mkdir ~/bin
 	//新建~/bin文件夹,~代表主文件夹
@@ -130,3 +165,10 @@ List of devices attached
 	* daemon not running. starting it now *
 	* daemon started successfully *
 第一条命令用来杀死当前正在运行的server, 第二条命令则以root的权限启动了新的server.再次adb devices可看到设备。如果还不行，再采取别的方法。
+
+编译CM7失败（不一定对）
+-------------
+提示/usr/bin/env: python2: No such file or directory，一条命令解决
+
+	sudo ln -s /usr/bin/python2.7 /usr/bin/python2
+输入之前到/usr/bin下看看python2的版本是不是2.7
